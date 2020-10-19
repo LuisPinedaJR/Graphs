@@ -25,7 +25,6 @@ class Graph:
             raise IndexError(f'Vertex {v1} does not exist.')
         elif v2 not in self.vertices:
             raise IndexError(f'Vertex {v2} does not exist.')
-        
         pass  # TODO
 
     def get_neighbors(self, vertex_id):
@@ -68,31 +67,28 @@ class Graph:
         while s.size() > 0:
             current_node = s.pop()
 
-    def dft_recursive(self, starting_vertex):
-        if current_node not in checked:
-            print(current_node)
-            checked.add(current_node)
-            neighbors = self.get_neighbors(current_node)
+            if current_node not in checked:
+                print(current_node)
+                checked.add(current_node)
+                neighbors = self.get_neighbors(current_node)
 
-            for neighbor in neighbors:
-                s.push(neighbor)
+                for neighbor in neighbors:
+                    s.push(neighbor)
 
 
     def dft_recursive(self, starting_vertex, checked=set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
-
         This should be done using recursion.
         """
+
         if starting_vertex not in checked:
             checked.add(starting_vertex)
             print(starting_vertex)
 
             for neighbor in self.vertices[starting_vertex]:
                 self.dft_recursive(neighbor, checked)
-        
-        
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -138,7 +134,7 @@ class Graph:
             if node not in checked:
                 if node == destination_vertex:
                     return path
-                
+
             checked.add(node)
 
             for neighbor in self.vertices[node]:
@@ -151,7 +147,6 @@ class Graph:
         Return a list containing a path from
         starting_vertex to destination_vertex in
         depth-first order.
-
         This should be done using recursion.
         """
         checked.add(starting_vertex)
@@ -167,6 +162,7 @@ class Graph:
 
                 if new_path is not None:
                     return new_path
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
